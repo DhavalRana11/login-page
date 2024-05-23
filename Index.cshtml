@@ -1,0 +1,92 @@
+﻿
+@model QuickShoap.Models.LogInModel
+@using System.Web.Optimization;
+@using QuickShoap.Infrastructure;
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>quickshoap| Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Template/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+    <!-- Custom CSS -->
+    <link href="~/Template/css/style.css" rel='stylesheet' type='text/css' />
+    <!-- Graph CSS -->
+    <link href="~/Template/css/font-awesome.css" rel="stylesheet">
+    <!-- jQuery -->
+    <link href='//fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet' type='text/css'>
+    <!-- lined-icons -->
+    <link rel="stylesheet" href="~/Template/css/icon-font.min.css" type='text/css' />
+    <!-- //lined-icons -->
+    <script src="~/Template/js/jquery-1.10.2.min.js" type="text/javascript"></script>
+
+    @Scripts.Render("~/bundles/jqueryval")
+    <!--clock init-->
+</head>
+<body>
+    <!--/login-->
+
+    <div>
+        
+<img style="width:100%" src=" ~/img/j.jpg" />"
+        <!--/login-top-->
+        <div class="error-top">
+            <h2 class="inner-tittle page">quick shop</h2>
+            <div class="login">
+                <h3 class="inner-tittle t-inner">Login</h3>
+                @Html.RenderMessages(false)
+                @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { id = "frmLogin", defaultbutton = "btnLogin" }))
+                {
+                    @Html.TextBoxFor(m => m.strLoginName, new
+               {
+                   id = "txtLoginName",
+                   @placeholder = "login Name",
+                   @class = "text",
+                   @maxlength = "50"
+               })
+                    <span class="msgSpan">@Html.ValidationMessageFor(m => m.strLoginName)</span>
+
+                    @Html.PasswordFor(m => m.strPassword, new { Value = @Model.strPassword, @placeholder = "password", @maxlength = "200" })
+                    <span class="msgSpan">@Html.ValidationMessageFor(m => m.strPassword)</span>
+
+
+                    @*@Html.TextBoxFor(m => m.strCompanyCode, new { id = "strCompanyCode", @placeholder = "Company code", @maxlength = "50" })
+                    <span class="msgSpan">@Html.ValidationMessageFor(m => m.strCompanyCode)</span>*@
+
+                    <div class="submit"><input type="submit" value="Login"></div>
+                    <div class="clearfix"></div>
+
+                    <div class="new">
+                        <p><label class="checkbox11"><input type="checkbox" name="checkbox"><i> </i>Forgot Password ?</label></p>
+                        <p class="sign">Do not have an account ? <a href="~/signup/Index">Sign Up</a></p>
+                        <div class="clearfix"></div>
+                    </div>
+                }
+            </div>
+
+
+        </div>
+
+
+        <!--//login-top-->
+    </div>
+
+    <!--//login-->
+    <!--footer section start-->
+    @Html.Partial("~/Views/Shared/FooterView.cshtml");
+    <!--footer section end-->
+    <!--js -->
+    <script src="~/Template/js/jquery.nicescroll.js"></script>
+    <script src="~/Template/js/scripts.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/Template/js/bootstrap.min.js"></script>
+</body>
+</html>
